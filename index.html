@@ -1,161 +1,387 @@
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Premier Feuille</title>
-  <meta name="description" content="紅茶（Janat／オリジナルティ）、ギフト、茶器を取り扱っています。" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Premier Feuille | Janat 正規取扱／オリジナル茶葉</title>
+  <meta name="description" content="Premier Feuille（プレミフィーユ）は Janat 正規取扱／オリジナル茶葉を取り扱う紅茶店です。">
 
   <style>
-    :root { --w: 1080px; --pad: 16px; --gap: 12px; }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif; line-height: 1.6; }
-    a { color: inherit; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { max-width: var(--w); margin: 0 auto; padding: 0 var(--pad); }
+    :root{
+      --w: 1080px;
+      --pad: 18px;
+      --radius: 14px;
+      --border: rgba(0,0,0,.10);
+      --muted: rgba(0,0,0,.62);
+      --bg: #fafafa;
+      --card: #fff;
+    }
 
-    /* Header */
-    .site-header { border-bottom: 1px solid #e7e7e7; background: #fff; position: sticky; top: 0; z-index: 10; }
-    .header-inner { display: flex; align-items: center; gap: var(--gap); padding: 10px var(--pad); }
-    .logo { font-weight: 700; letter-spacing: .2px; white-space: nowrap; }
-    .site-nav { display: flex; gap: 14px; flex: 1; justify-content: center; }
-    .site-util { display: flex; gap: 14px; white-space: nowrap; }
-    .site-nav a, .site-util a { padding: 6px 2px; }
+    *{ box-sizing: border-box; }
+    html,body{ height: 100%; }
+    body{
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", Arial, sans-serif;
+      line-height: 1.6;
+      color: #111;
+      background: var(--bg);
+      overflow-x: hidden;
+    }
 
-    /* Hero */
-    .hero { padding: 22px 0 6px; }
-    .hero h1 { font-size: 22px; margin: 0 0 6px; }
-    .hero p { margin: 0 0 12px; color: #444; }
-    .cta { display: inline-block; border: 1px solid #111; padding: 10px 12px; border-radius: 10px; }
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
 
-    /* Sections */
-    section { padding: 18px 0; }
-    h2 { font-size: 18px; margin: 0 0 10px; }
-    .muted { color: #555; font-size: 13px; }
+    .wrap{
+      max-width: var(--w);
+      margin: 0 auto;
+      padding: 0 var(--pad);
+    }
 
-    /* 4 fixed cards */
-    .grid { display: grid; gap: var(--gap); grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .card { border: 1px solid #e7e7e7; border-radius: 14px; padding: 14px; min-height: 92px; display: grid; gap: 6px; }
-    .card h3 { margin: 0; font-size: 16px; }
-    .card p { margin: 0; color: #444; font-size: 13px; }
+    /* ===== Header ===== */
+    .site-header{
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(250,250,250,.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
 
-    /* Updates */
-    .updates { border: 1px solid #e7e7e7; border-radius: 14px; padding: 14px; }
-    .update-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-    .tag { display: inline-block; font-size: 12px; border: 1px solid #cfcfcf; border-radius: 999px; padding: 2px 8px; margin-right: 8px; }
-    .more { display: inline-block; margin-top: 10px; font-size: 13px; color: #222; }
+    .header-inner{
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 16px;
+      min-height: 56px;
+      padding: 10px 0;
+    }
 
-    /* Footer */
-    .site-footer { border-top: 1px solid #e7e7e7; padding: 18px 0; margin-top: 18px; background: #fff; }
-    .footer-nav { display: flex; flex-wrap: wrap; gap: 14px; }
-    .footer-meta { margin-top: 10px; display: grid; gap: 4px; }
-    .small { font-size: 12px; color: #555; }
+    .site-mark{
+      display: inline-flex;
+      align-items: center;
+      line-height: 0;
+    }
+    .site-mark img{
+      display: block;
+      height: 28px;
+      width: auto;
+    }
 
-    @media (max-width: 720px) {
-      .header-inner { flex-wrap: wrap; }
-      .site-nav { order: 3; width: 100%; justify-content: flex-start; gap: 12px; }
-      .site-util { margin-left: auto; }
-      .grid { grid-template-columns: 1fr; }
+    .site-nav, .site-util{
+      display: flex;
+      gap: 14px;
+      white-space: nowrap;
+      align-items: center;
+      font-size: 14px;
+    }
+    .site-nav{ justify-content: center; }
+    .site-util{ justify-content: flex-end; color: var(--muted); }
+
+    /* ===== Main ===== */
+    main{ padding: 26px 0 42px; }
+
+    .hero{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+    .hero h1{
+      margin: 0 0 10px;
+      font-size: 22px;
+      letter-spacing: .02em;
+      line-height: 1.25;
+    }
+    .hero p{
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+    .hero-actions{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #fff;
+      font-size: 14px;
+      text-decoration: none;
+    }
+    .btn.primary{
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+    .btn:hover{ text-decoration: none; }
+
+    /* ===== Section ===== */
+    .section{
+      margin-top: 18px;
+    }
+    .section-title{
+      margin: 0 0 10px;
+      font-size: 16px;
+      letter-spacing: .02em;
+    }
+
+    /* ===== Categories ===== */
+    .grid{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      min-height: 86px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card h3{
+      margin: 0 0 6px;
+      font-size: 15px;
+      line-height: 1.25;
+    }
+    .card p{
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .card .link{
+      margin-top: 10px;
+      font-size: 13px;
+      color: #111;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ===== Logo block (under categories) ===== */
+    .logo-block{
+      margin-top: 14px;
+    }
+    .logo-card{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px;
+      overflow: hidden;
+    }
+    .logo-card img{
+      display: block;
+      width: min(420px, 100%);
+      height: auto;
+      margin: 0 auto;
+    }
+
+    /* ===== News ===== */
+    .news{
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+    }
+    .news-list{
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .news-item{
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 12px;
+      align-items: baseline;
+    }
+    .news-date{
+      font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .news-title{
+      font-size: 14px;
+    }
+
+    /* ===== Footer ===== */
+    footer{
+      border-top: 1px solid var(--border);
+      padding: 22px 0 40px;
+      color: var(--muted);
+      font-size: 13px;
+      background: #fff;
+    }
+    .footer-links{
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .footer-links a{
+      color: var(--muted);
+    }
+    .footer-links a:last-child{
+      margin-left: auto; /* 「商品について」を一番右へ */
+    }
+    .footer-meta{
+      margin-top: 10px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 980px){
+      .grid{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 720px){
+      :root{ --pad: 14px; }
+      .header-inner{
+        grid-template-columns: auto auto;
+        grid-auto-flow: row;
+        gap: 10px;
+      }
+      .site-nav{ display: none; } /* まずはスマホは隠す（必要なら後でメニュー化） */
+      .hero h1{ font-size: 20px; }
+      .news-item{ grid-template-columns: 1fr; gap: 4px; }
+      .footer-links a:last-child{ margin-left: 0; } /* スマホは折り返し優先 */
     }
   </style>
 </head>
 
 <body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="wrap">
+      <div class="header-inner">
+        <a href="index.html" class="site-mark" aria-label="トップへ">
+          <img src="images/logo-mark.png" alt="Premier Feuille">
+        </a>
 
-<header class="site-header">
-  <div class="wrap header-inner">
-    <a class="logo" href="/index.html" aria-label="ホーム">Premier Feuille</a>
+        <nav class="site-nav" aria-label="ナビゲーション">
+          <a href="about/">ABOUT</a>
+          <a href="news/">NEWS</a>
+          <a href="shopping/">商品</a>
+          <a href="shopping/gift/">ギフト</a>
+        </nav>
 
-    <!-- 主ナビ：最大3つ（店舗/ガイドは外す） -->
-    <nav class="site-nav" aria-label="主要メニュー">
-	  <a href="/shopping/">about</a>
-	  <a href="/news/">NEWS</a>
-      <a href="/shopping/">商品一覧</a>
-      <a href="/shopping/gift/">ギフト</a>
-     >
-    </nav>
-
-    <!-- ユーティリティ：会員・カート -->
-    <nav class="site-util" aria-label="会員・カート">
-      <a href="/account/login.html">会員</a>
-      <a href="/cart/">カート</a>
-    </nav>
-  </div>
-</header>
-
-<main class="wrap">
-
-  <!-- できるだけ短く -->
-  <section class="hero" aria-label="トップ概要">
-    <h1>紅茶茶葉の量り売り専門店</h1>
-    <p>Janat（ジャンナッツ）／Premier Feuill・オリジナルティ／ギフトセット／アクセサリー</p>
-    <a class="cta" href="/shopping/">商品を探す</a>
-  </section>
-  
- <!-- 更新：3種のみ（新商品／期間限定／再入荷）最大4件 -->
-  <section aria-labelledby="upd-title">
-    <h2 id="upd-title">NEWS</h2>
-    <div class="updates">
-      <ul class="update-list">
-        <!-- ここは最大4件に固定（文体：一言） -->
-        <li><span class="tag">新商品</span>アールグレイ（TB）</li>
-        <li><span class="tag">再入荷</span>ルイボス各種</li>
-        <li><span class="tag">期間限定</span>クリスマスブレンド</li>
-        <li><span class="tag">新商品</span>焼き菓子（バウム）</li>
-      </ul>
-
-      <a class="more" href="/news/">更新ログ（NEWS）へ</a>
-      <div class="muted">※ この枠は「新商品／期間限定／再入荷」以外は載せません。</div>
+        <nav class="site-util" aria-label="ユーザーメニュー">
+          <a href="account/register.html">会員登録</a>
+          <a href="account/login.html">ログイン</a>
+          <a href="cart/">カート</a>
+        </nav>
+      </div>
     </div>
-  </section>
-  
-  <!-- 4枠固定（順序も固定） -->
-  <section aria-labelledby="cat-title">
-    <h2 id="cat-title">カテゴリ</h2>
-    <div class="grid">
-      <a class="card" href="/shopping/janat/">
-        <h3>ジャンナッツ</h3>
-        <p>Janat</p>
-      </a>
+  </header>
 
-      <a class="card" href="/shopping/original/">
-        <h3>プルミフィーユ・オリジナルティ</h3>
-        <p>Original Tea</p>
-      </a>
+  <!-- Main -->
+  <main>
+    <div class="wrap">
+      <!-- Hero -->
+      <section class="hero" aria-label="導入">
+        <h1>PREMIER FEUILLE（プレミフィーユ）紅茶の量り売り専門店</h1>
+        <p>Janat 正規取扱／オリジナル茶葉の量り売り・ギフト・茶器。まずはカテゴリからお選びください。</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="shopping/">商品カテゴリを見る</a>
+          <a class="btn" href="news/">新着を見る</a>
+        </div>
+      </section>
 
-      <a class="card" href="/shopping/gift/">
-        <h3>ギフトセット</h3>
-        <p>Gift</p>
-      </a>
+      <!-- Categories -->
+      <section class="section" aria-label="商品カテゴリ">
+        <h2 class="section-title">カテゴリ</h2>
+        <div class="grid">
+          <a class="card" href="shopping/tea/">
+            <div>
+              <h3>オリジナル茶葉</h3>
+              <p>定番・季節限定・オリジナル。</p>
+            </div>
+            <span class="link">見る</span>
+          </a>
 
-      <a class="card" href="/shopping/accessory/">
-        <h3>アクセサリー</h3>
-        <p>Teaware</p>
-      </a>
+          <a class="card" href="shopping/janat/">
+            <div>
+              <h3>Janat</h3>
+              <p>正規取扱。人気銘柄を中心に。</p>
+            </div>
+            <span class="link">見る</span>
+          </a>
+
+          <a class="card" href="shopping/gift/">
+            <div>
+              <h3>ギフト</h3>
+              <p>贈り物・セット・資材。</p>
+            </div>
+            <span class="link">見る</span>
+          </a>
+
+          <a class="card" href="shopping/teaware/">
+            <div>
+              <h3>茶器・用品</h3>
+              <p>ポット、カップ、フィルター等。</p>
+            </div>
+            <span class="link">見る</span>
+          </a>
+        </div>
+
+        <!-- Logo block under categories -->
+        <div class="logo-block" aria-label="ブランドロゴ">
+          <div class="logo-card">
+            <img src="images/logo.png" alt="Premier Feuille">
+          </div>
+        </div>
+      </section>
+
+      <!-- News -->
+      <section class="section" aria-label="新着情報">
+        <h2 class="section-title">NEWS</h2>
+        <div class="news">
+          <ul class="news-list">
+            <li class="news-item">
+              <span class="news-date">2025-12-19</span>
+              <a class="news-title" href="news/">トップページを更新しました。</a>
+            </li>
+            <li class="news-item">
+              <span class="news-date">2025-12-10</span>
+              <a class="news-title" href="news/">季節限定商品の入荷情報を掲載しました。</a>
+            </li>
+            <li class="news-item">
+              <span class="news-date">2025-12-01</span>
+              <a class="news-title" href="news/">年末年始の営業について。</a>
+            </li>
+          </ul>
+        </div>
+      </section>
     </div>
-  </section>
+  </main>
 
- 
+  <!-- Footer -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-links" aria-label="フッターリンク">
+        <a href="about/">ABOUT</a>
+        <a href="news/">NEWS</a>
+        <a href="shopping/">商品</a>
+        <a href="shopping/gift/">ギフト</a>
+        <a href="contact/">お問い合わせ</a>
+        <a href="policy/">特定商取引法に基づく表記</a>
+        <a href="about/product/">商品について</a>
+      </div>
 
-</main>
-
-<footer class="site-footer">
-  <div class="wrap">
-    <!-- フッター：法務・会社・プライバシー・商品について -->
-    <nav class="footer-nav" aria-label="フッターリンク">
-      <a href="/law/">特定商取引法に基づく表記</a>
-      <a href="/company/">会社案内</a>
-      <a href="/privacy/">プライバシーポリシー</a>
-      <a href="/about-products/">商品について</a>
-    </nav>
-
-    <!-- 来店情報＝営業日は完全にフッター送り（必要なら店舗情報へリンク） -->
-    <div class="footer-meta">
-      <div class="small">営業日・所在地などは <a href="/company/">会社案内</a>（または店舗情報ページ）をご確認ください。</div>
-      <div class="small">© Premier Feuille</div>
+      <div class="footer-meta">
+        <div>© Premier Feuille</div>
+        <div>Janat 正規取扱／オリジナル茶葉</div>
+      </div>
     </div>
-  </div>
-</footer>
-
+  </footer>
 </body>
 </html>
